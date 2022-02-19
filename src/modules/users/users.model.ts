@@ -1,6 +1,7 @@
 import IUser from './users.interface';
 import mongoose from 'mongoose';
 
+// NOTE : Use create colletion db
 const UserSchema = new mongoose.Schema({
   first_name: {
     type: String,
