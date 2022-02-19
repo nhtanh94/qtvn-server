@@ -20,7 +20,9 @@ class App {
 
     this.connectToDatabase();
     this.initializeMiddleware();
+    // NOTE : Run this.initializeMiddleware(); behind route
     this.initializeRoutes(routes);
+    this.initializeErorMiddleware();
   }
 
   public listen() {
@@ -35,6 +37,7 @@ class App {
     });
   }
 
+  // NOTE : Note Sorting order
   private initializeMiddleware() {
     if (this.production) {
       // NOTE : Valiadate request params spam
@@ -47,11 +50,15 @@ class App {
       this.app.use(morgan('dev'));
       this.app.use(cors({ origin: true, credentials: true }));
     }
-    // NOTE : throw error
-    this.app.use(errorMiddleware);
+
     // NOTE : Recieve json from body request
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+  }
+
+  private initializeErorMiddleware(){
+    // NOTE : throw error
+    this.app.use(errorMiddleware);
   }
 
   private connectToDatabase() {

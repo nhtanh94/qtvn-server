@@ -18,7 +18,7 @@
 - git add \*
 - git config --global user.name "Your Name"
 - git config --global user.email "Your Email"
-- git remote add origin https://github.com/teduinternational/tedu_social.git
+- git remote add origin https://github.com/******.git
 - git push -u origin master
 
 ### ESLINT
