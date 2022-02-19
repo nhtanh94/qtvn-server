@@ -49,7 +49,7 @@ class App {
 
   private connectToDatabase() {
     try {
-      const connectString = process.env.MONGODB_URI;
+      const connectString = process.env.MONGODB_LOCAL;
       if (!connectString) {
         Logger.error('Connection string is invalid');
         return;
