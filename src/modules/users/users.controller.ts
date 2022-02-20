@@ -45,7 +45,7 @@ export default class UsersController {
     next: NextFunction
   ) => {
     try {
-      const page: number = Number(req.params.page);
+      const page = Number(req.params.page);
       const keyword = req.query.keyword || '';
 
       const paginationResult = await this.userService.getAllPaging(

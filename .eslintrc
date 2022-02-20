@@ -1,0 +1,18 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      // NOTE : Cant add some plugin check rules from 3rd part ex: "plugin:@shopify/esnext"
+      // "plugin:@shopify/esnext"
+    ],
+    "rules": {
+    // NOTE : no code console.log
+      "no-console": "error"
+    }
+  }
