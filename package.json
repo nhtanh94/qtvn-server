@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon src/server.ts",
     "build": "webpack",
-    "run:dev": "NODE_ENV=development nodemon dist/server.js",
+    "start": "node dist/server.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix"
   },
