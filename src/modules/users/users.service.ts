@@ -88,7 +88,7 @@ class UserService {
   }
 
   public async getUserById(userId: string): Promise<IUser> {
-    let user = await this.userSchema.findById(userId).exec();
+    const user = await this.userSchema.findById(userId).exec();
     if (!user) {
       throw new HttpException(404, `User is not exists`);
     }
@@ -105,7 +105,7 @@ class UserService {
     keyword: string,
     page: number
   ): Promise<IPagination<IUser>> {
-    const pageSize: number = Number(process.env.PAGE_SIZE || 10);
+    const pageSize = Number(process.env.PAGE_SIZE || 10);
 
     let query = {};
     if (keyword) {
@@ -143,7 +143,7 @@ class UserService {
   private createToken(user: IUser): TokenData {
     const dataInToken: DataStoredInToken = { id: user._id };
     const secret: string = process.env.JWT_TOKEN_SECRET!;
-    const expiresIn: number = 60;
+    const expiresIn = 60;
     return {
       token: jwt.sign(dataInToken, secret, { expiresIn: expiresIn }),
     };
