@@ -7,7 +7,8 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-
+import YAML from 'yamljs';
+import swaggerUi from 'swagger-ui-express';
 class App {
   public app: express.Application;
   public port: string | number;
@@ -23,6 +24,7 @@ class App {
     // NOTE : Run this.initializeMiddleware(); behind route
     this.initializeRoutes(routes);
     this.initializeErorMiddleware();
+    this.initializSwagger();
   }
 
   public listen() {
@@ -73,6 +75,11 @@ class App {
         Logger.error(reason);
       });
     Logger.info('Database connected...');
+  }
+
+  private initializSwagger(){
+    const swaggerDocument = YAML.load('./src/swagger.yaml');
+    this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
   }
 }
 
